@@ -14,25 +14,22 @@ public class XiEr_mx {
             arr[i]=sc.nextInt();
         }
 
+
         for(int gap=len/2;gap>0;gap/=2){
             for(int i=gap;i<=len-1;i++){
-                int key=arr[i];
                 int j=i-gap;
-
+                int key=arr[i];
                 while(j>=0&&arr[j]>key){
                     arr[j+gap]=arr[j];
                     j-=gap;
                 }
-
                 arr[j+gap]=key;
             }
-
         }
+
 
         for(int i=0;i<len;i++){
             System.out.print(arr[i]+" ");
         }System.out.println();
-
-
     }
 }
