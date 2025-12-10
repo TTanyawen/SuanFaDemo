@@ -1,0 +1,6 @@
+Future
+1. future.get() 拿结果
+2. future.get(1,TimeUnit.XXX) 拿结果(带有最大等待时间)
+3. future.cancal() 尝试中断任务
+4. future.isCanceled() 判断任务是否有成功中断
+5. future.isDone() 判断任务是否有完成

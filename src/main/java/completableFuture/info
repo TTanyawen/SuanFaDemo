@@ -1,0 +1,25 @@
+Future 的痛点
+1. 不能从外部设置任务结果为完成，只能等待结果，外部无法触发future的成功/失败
+     CompletableFuture可以cf.complete("手动完成结果");
+
+2. 不能链式编排
+3. 不能处理回调
+4. 不能多个任务组合
+5. 没有异常处理机制
+
+
+CompletableFuture
+1. 链式(这种thenxxx也是回调，意味着当xxx达成时就触发另一个xxx操作)
+    .thenAccept 拿到结果做一些处理
+    .thenRun    不拿结果做一些处理
+
+    .thenApply  继续改结果
+       如果一层层返回值都是completableFuture都是在嵌套future
+    使用.thenCompose避免嵌套
+
+2. 异常处理
+    .exceptionally
+        对异常做一些处理
+    .handle
+        类似finally
+3. 手动调用complete使得任务结束

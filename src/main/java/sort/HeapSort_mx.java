@@ -1,6 +1,10 @@
 package sort;
 
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.ReentrantLock;
+
 
 //9
 //5 2 1 7 3 4 9 0 8
@@ -13,24 +17,20 @@ public class HeapSort_mx {
     static int len;
     static int[] arr;
     public static void heapSort(int[] arr){
-
-        //建堆
-        for(int i=arr.length/2-1;i>=0;i--){
+        int len=arr.length;
+        for(int i=len/2-1;i>=0;i--){
             heapify(arr,len,i);
         }
 
-        //确定元素，减小堆len
-        for(int i=arr.length-1;i>=1;i--){
-            swap(arr,0,i);
+        for(int i=len-1;i>=1;i--){
+            swap(arr,i,0);
             heapify(arr,i,0);
         }
-
     }
-
     public static void heapify(int[] arr,int len,int i){
         int max=i;
-        int left=2*i+1;
-        int right=2*i+2;
+        int left=i*2+1;
+        int right=i*2+2;
 
         if(left<=len-1&&arr[left]>arr[max]){
             max=left;
@@ -40,10 +40,11 @@ public class HeapSort_mx {
         }
 
         if(max!=i){
-            swap(arr,max,i);
+            swap(arr,i,max);
             heapify(arr,len,max);
         }
     }
+
     public static void swap(int[] arr,int i,int j){
         int tmp=arr[i];
         arr[i]=arr[j];
@@ -53,7 +54,6 @@ public class HeapSort_mx {
         Scanner sc=new Scanner(System.in);
         len=sc.nextInt();
         arr=new int[len];
-
         for(int i=0;i<len;i++){
             arr[i]=sc.nextInt();
         }
@@ -62,11 +62,9 @@ public class HeapSort_mx {
         init();
         heapSort(arr);
 
-
         for(int i=0;i<arr.length;i++){
             System.out.print(arr[i]+" ");
         }System.out.println();
-
 
     }
 }
