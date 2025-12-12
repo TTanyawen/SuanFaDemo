@@ -10,7 +10,7 @@ public class CFDemo01 {
             System.out.println("异步任务执行");
         });
 
-        //runAsync：异步执行+有结果，get会阻塞拿结果
+        //supplyAsync：异步执行+有结果，get会阻塞拿结果
         CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
             try {
                 Thread.sleep(2000);

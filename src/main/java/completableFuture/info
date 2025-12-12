@@ -9,13 +9,15 @@ Future 的痛点
 
 
 CompletableFuture
+0. 创建
+    supplyAsync 有结果
+    runAsync 无结果
 1. 链式(这种thenxxx也是回调，意味着当xxx达成时就触发另一个xxx操作)
-    .thenAccept 拿到结果做一些处理
-    .thenRun    不拿结果做一些处理
-
-    .thenApply  继续改结果
+    .thenApply  有参，有返回
+    .thenAccept 有参，无返回
+    .thenRun    无参，无返回
        如果一层层返回值都是completableFuture都是在嵌套future
-    使用.thenCompose避免嵌套
+    使用.thenCompose避免嵌套，thenCompose会帮忙把嵌套拆开到只剩下一个future
 
 2. 异常处理
     .exceptionally
