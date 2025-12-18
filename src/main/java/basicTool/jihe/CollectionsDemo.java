@@ -18,6 +18,8 @@ public class CollectionsDemo {
                 return o1.get(0)-o2.get(0);
             }
         });
+
+        Collections.sort(l2, (o1, o2) -> o1.get(0)-o2.get(0));
         System.out.println(l2.toString());
 
         //线程安全包装
