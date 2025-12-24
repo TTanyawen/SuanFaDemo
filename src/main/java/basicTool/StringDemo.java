@@ -9,6 +9,9 @@ public class StringDemo {
             System.out.print(c+" ");
         }System.out.println();
 
+        char[] c={'a','b'};
+        String s2=new String(c);
+        System.out.println(s2);
 
     }
 }
