@@ -39,13 +39,16 @@ public class FileInputStreamDemo {
         System.out.println((char)184);//¸
         System.out.println((char)173);//­
 
+
+
 //        char c='ÿ';
 //        System.out.println(c+"---"+(int)c);
 
     }
     public static void readFile(String filePath) {
+        FileInputStream in=null;
         try {
-            FileInputStream in = new FileInputStream(filePath);
+            in = new FileInputStream(filePath);
             int b;//字节值
             while ((b = in.read()) != -1) {
                 System.out.println((char) b);
@@ -54,6 +57,15 @@ public class FileInputStreamDemo {
             e.printStackTrace();
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            if(in!=null){
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
     }
 
