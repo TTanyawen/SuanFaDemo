@@ -61,3 +61,28 @@ where o.user_id in(
 select *
 from user u
 where u.username IN('alice','ivan');
+
+
+-- 性能：
+-- 从执行策略来看
+-- EXIST是一行行去user看有没有存在的数据
+-- IN是先把user过滤一遍形成一个子集合，然后对于order的每一行再去看在不在子集合中
+-- 如果user表很小，过滤后的user子集合更小，就适合用IN
+-- 如果order表和user表很大，user表过滤后也不见得有多小，就适合用EXIST
+-- 普遍来讲，用EXIST会比较好，因为它找到了一条数据符合的就会“短路”返回true
+
+
+-- NULL的处理
+-- IN: Null与任何值比较返回 false,即便是null和null
+-- NULL==1 -> unknown ->false
+-- NULL==2 -> unknown ->false
+-- NULL==NULL -> unknown ->false
+select 1 where 1 in (1, 2);
+select 1 where null in (1, 2, null);
+
+-- EXIST只关心有没有结果，不关心结果是不是null
+-- 如果你考虑保留null，请用EXIST
+select 1 where exists(
+    select NULL
+)-- 这里select NULL表示一行结果，所以上层会返回1行值为1的结果
+
