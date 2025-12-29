@@ -8,5 +8,7 @@ public class DequeDemo {
 
         ArrayDeque<Integer> que2=new ArrayDeque<>();
         que2.offer(0);
+        que2.offerFirst(1);
+
     }
 }
