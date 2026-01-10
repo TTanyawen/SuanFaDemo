@@ -94,6 +94,8 @@ public class ListDemo {
         l.clear();
 
 
+
+
     }
 
     public static <T> void print(Collection<T> collection,String comment){

@@ -44,5 +44,14 @@ public class MapDemo {
 
         ConcurrentHashMap<String,Integer> mm=new ConcurrentHashMap<>();
 
+        List<Integer> list2=new ArrayList<>();
+        Set<Integer> set5=new HashSet<>();
+        //add list2 to set5
+        set5.addAll(list2);
+        //set to int[]
+        int[] arr=set5.stream().mapToInt(Integer::intValue).toArray();
+
+        Map<String,Integer> map2=new HashMap<>();
+        int[] val=map2.values().stream().mapToInt(Integer::intValue).toArray();
     }
 }
