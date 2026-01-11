@@ -53,5 +53,12 @@ public class MapDemo {
 
         Map<String,Integer> map2=new HashMap<>();
         int[] val=map2.values().stream().mapToInt(Integer::intValue).toArray();
+
+        Map<String,Integer> map44=new HashMap<>();
+        map44.put("abc",3);
+        map44.put("vgh",5);
+        System.out.println(map44.values());
+
+        List<Integer> ll=new ArrayList<>(map44.values());
     }
 }
