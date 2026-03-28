@@ -1,6 +1,6 @@
 package basicTool.jihe;
 
-import com.sun.source.tree.Tree;
+//import com.sun.source.tree.Tree;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -38,20 +38,20 @@ public class JiHeDemo {
         List<Integer> list1=new ArrayList<>();
         List<Integer> list2=new ArrayList<>(list1);
         List<Integer> list3=Arrays.asList(1,2,3);
-        List<Integer> list4=List.of(1,2,3);
+//        List<Integer> list4=List.of(1,2,3);
         //数组变list，list变数组
         int[] arr1={1,2,3};
-        List<Integer> list5=Arrays.stream(arr1).boxed().toList();
-        int[] arr2=list5.stream().mapToInt(Integer::intValue).toArray();
+//        List<Integer> list5=Arrays.stream(arr1).boxed().toList();
+//        int[] arr2=list5.stream().mapToInt(Integer::intValue).toArray();
 
-        list5.get(1);
-        for(int num:list5){
-            System.out.println(num);
-        }
-        Iterator<Integer> it=list5.iterator();
-        while(it.hasNext()){
-            System.out.println(it.next());
-        }
+//        list5.get(1);
+//        for(int num:list5){
+//            System.out.println(num);
+//        }
+//        Iterator<Integer> it=list5.iterator();
+//        while(it.hasNext()){
+//            System.out.println(it.next());
+//        }
 
         //LinkedList
         List<Integer> list6=new LinkedList<>();
@@ -63,8 +63,8 @@ public class JiHeDemo {
         list7.add(1);
         Integer i=1;
         list7.remove(i);
-        list7.addAll(List.of(1,2,3));
-        list7.removeAll(List.of(1,2,3));
+//        list7.addAll(List.of(1,2,3));
+//        list7.removeAll(List.of(1,2,3));
 
 
         //HashSet
@@ -72,8 +72,8 @@ public class JiHeDemo {
         set2.add(1);
         System.out.println(set2.contains(1));
         set2.remove(1);
-        set2.addAll(List.of(1,2,3));
-        set2.removeAll(List.of(1,2,3));
+//        set2.addAll(List.of(1,2,3));
+//        set2.removeAll(List.of(1,2,3));
         Set<Integer> set3=new HashSet<>(Arrays.asList(1,2,3));
         for(Integer ele:set3){
             System.out.println(ele);

@@ -27,7 +27,7 @@ public class T202603080002 {
                 }
             }
         });
-        ts.addAll(List.of(3,30,34,5,9));
+//        ts.addAll(List.of(3,30,34,5,9));
         StringBuilder sb=new StringBuilder();
         for(int i:ts){
             sb.append(i);
