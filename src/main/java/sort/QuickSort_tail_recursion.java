@@ -1,15 +1,24 @@
-package sort.sort_20260307;
+package sort;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
 //9
 //5 2 1 7 3 4 9 0 8
-public class QuickSort_mx {
+
+//快排优化->尾递归，减少递归调用次数
+public class QuickSort_tail_recursion {
     public static void quickSort(int[] arr,int from,int to){
         if(from>=to){
             return;
         }
+        while(from<to){
+            int mid=partition(arr,from,to);
+            quickSort(arr,mid+1,to);
+            to=mid-1;
+        }
+    }
+
+    public static int partition(int[] arr,int from,int to){
         int pivot=from;
         int index=pivot+1;
         for(int i=index;i<=to;i++){
@@ -20,10 +29,8 @@ public class QuickSort_mx {
         }
         int mid=index-1;
         swap(arr,mid,pivot);
-        quickSort(arr,from,mid-1);
-        quickSort(arr,mid+1,to);
+        return mid;
     }
-
     public static void swap(int[] arr,int i,int j){
         int tmp=arr[i];
         arr[i]=arr[j];
@@ -40,6 +47,4 @@ public class QuickSort_mx {
 
         System.out.println(Arrays.toString(arr));
     }
-
-
 }

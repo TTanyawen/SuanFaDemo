@@ -1,15 +1,33 @@
-package sort.sort_20260307;
+package sort;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
 //9
 //5 2 1 7 3 4 9 0 8
-public class QuickSort_mx {
+
+//快排优化->pivot三个数取中间值使其更加随机
+public class QuickSort_random_pivot {
     public static void quickSort(int[] arr,int from,int to){
         if(from>=to){
             return;
         }
+        int mid=partition(arr,from,to);
+
+        quickSort(arr,from,mid-1);
+        quickSort(arr,mid+1,to);
+    }
+
+    public static int partition(int[] arr,int from,int to){
+        //首尾中，取一个中间元素作为pivot
+        int a=from;
+        int b=(from+to)/2;
+        int c=to;
+        if (arr[a] > arr[b]) swap(arr, a, b);
+        if (arr[a] > arr[c]) swap(arr, a, c);
+        if (arr[b] > arr[c]) swap(arr, b, c);
+        swap(arr, from, b);
+
+
         int pivot=from;
         int index=pivot+1;
         for(int i=index;i<=to;i++){
@@ -20,10 +38,8 @@ public class QuickSort_mx {
         }
         int mid=index-1;
         swap(arr,mid,pivot);
-        quickSort(arr,from,mid-1);
-        quickSort(arr,mid+1,to);
+        return mid;
     }
-
     public static void swap(int[] arr,int i,int j){
         int tmp=arr[i];
         arr[i]=arr[j];
@@ -40,6 +56,4 @@ public class QuickSort_mx {
 
         System.out.println(Arrays.toString(arr));
     }
-
-
 }
