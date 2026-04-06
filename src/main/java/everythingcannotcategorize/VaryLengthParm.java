@@ -21,4 +21,15 @@ public class VaryLengthParm {
         System.out.println(b.length);
 
     }
+    /*
+    这样是不行的：Vararg parameter must be the last in the list
+     */
+//    public static void test2(int... b,String a){
+//        System.out.println(a);
+//        for (int i : b) {
+//            System.out.println(i);
+//        }
+//        System.out.println(b.length);
+//
+//    }
 }
